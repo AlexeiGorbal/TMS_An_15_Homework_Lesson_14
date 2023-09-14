@@ -3,8 +3,8 @@ package com.teachmesills.lesson14.part2.model;
 public class Client implements Runnable {
     private Station station;
 
-    public Client(Station store) {
-        this.station = store;
+    public Client(Station station) {
+        this.station = station;
     }
 
     @Override

@@ -1,36 +1,38 @@
 package com.teachmesills.lesson14.part2.model;
 
 public class Station {
-    private int car;
+    private int currentCar;
 
     public synchronized void get() {
-        while (car < 1) {
+        while (currentCar < 1) {
             try {
                 wait();
             } catch (InterruptedException e) {
+                System.out.println(e);
             }
         }
 
-        car--;
+        currentCar--;
 
         System.out.println("The client took one car.");
-        System.out.println("Cars being serviced: " + car);
+        System.out.println("Cars being serviced: " + currentCar);
 
         notify();
     }
 
     public synchronized void put() {
-        while (car >= 3) {
+        while (currentCar >= 3) {
             try {
                 wait();
             } catch (InterruptedException e) {
+                System.out.println(e);
             }
         }
 
-        car++;
+        currentCar++;
 
         System.out.println("Took one car for service.");
-        System.out.println("Cars being serviced: " + car);
+        System.out.println("Cars being serviced: " + currentCar);
 
         notify();
     }
